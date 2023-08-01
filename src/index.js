@@ -1,8 +1,18 @@
-const { Client } = require('discord.js');
+require('dotenv').config();
 
-const client = new Client({});
+const {
+  Client,
+  Events,
+  GatewayIntentBits,
+} = require('discord.js');
 
-client.on('ready', () => {
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+  ]
+});
+
+client.on(Events.ClientReady, () => {
   console.log('Logged in!');
 });
 
