@@ -4,7 +4,10 @@ const {
   Client,
   Events,
   GatewayIntentBits,
+  REST,
 } = require('discord.js');
+
+const { clientReadyHandler } = require('./events/clientReady');
 
 const client = new Client({
   intents: [
@@ -12,8 +15,6 @@ const client = new Client({
   ]
 });
 
-client.on(Events.ClientReady, () => {
-  console.log('Logged in!');
-});
+client.on(Events.ClientReady, clientReadyHandler);
 
 client.login();
